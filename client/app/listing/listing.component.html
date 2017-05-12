@@ -1,0 +1,25 @@
+<div class="jumbotron">
+    <h1 class="text-center">Pictures Pic</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form>
+                <div class="input-group">
+                <span class="input-group-btn">
+                    <a [routerLink]="['/register']" class="btn btn-primary">
+                        New Picture
+                    </a>
+                </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <panel *ngFor="let picture of pictures" title={{picture.titulo}} class="col-md-2">
+            <picture url="{{picture.url}}" title="{{picture.titulo}}"></picture>
+        </panel>
+    </div>
+</div>
