@@ -10,29 +10,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Created by crist on 11/05/2017.
+ * Created by crist on 13/05/2017.
  */
+var http_1 = require("@angular/http");
 var core_1 = require("@angular/core");
-var PictureComponent = (function () {
-    function PictureComponent() {
+var PictureService = (function () {
+    function PictureService(http) {
+        this.url = 'v1/fotos';
+        this.http = http;
+        this.headers = new http_1.Headers();
+        this.headers.append('Content-Type', 'application/json');
     }
-    return PictureComponent;
+    PictureService.prototype.save = function (picture) {
+        return this.http.post(this.url, JSON.stringify(picture), { headers: this.headers });
+    };
+    PictureService.prototype.list = function () {
+        return this.http.get(this.url).map(function (res) { return res.json(); });
+    };
+    return PictureService;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], PictureComponent.prototype, "titulo", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], PictureComponent.prototype, "url", void 0);
-PictureComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: 'picture',
-        templateUrl: './picture.component.html',
-        styleUrls: ['./picture.component.css']
-    })
-], PictureComponent);
-exports.PictureComponent = PictureComponent;
-//# sourceMappingURL=picture.component.js.map
+PictureService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], PictureService);
+exports.PictureService = PictureService;
+//# sourceMappingURL=picture.service.js.map

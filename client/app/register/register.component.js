@@ -14,12 +14,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = require("@angular/core");
 var picture_component_1 = require("../picture/picture.component");
-var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
+var picture_service_1 = require("../picture/picture.service");
 var RegisterComponent = (function () {
-    function RegisterComponent(http, fb) {
+    function RegisterComponent(pictureService, fb) {
         this.picture = new picture_component_1.PictureComponent();
-        this.http = http;
+        this.pictureService = pictureService;
         this.myForm = fb.group({
             titulo: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])],
             url: ['', forms_1.Validators.required],
@@ -29,10 +29,7 @@ var RegisterComponent = (function () {
     RegisterComponent.prototype.save = function (event) {
         var _this = this;
         event.preventDefault();
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        this.http.post('v1/fotos/', JSON.stringify(this.picture), { headers: headers })
-            .subscribe(function () {
+        this.pictureService.save(this.picture).subscribe(function () {
             _this.picture = new picture_component_1.PictureComponent();
             console.log('Picture successful saved');
         }, function (error) { return console.log(error); });
@@ -45,7 +42,7 @@ RegisterComponent = __decorate([
         selector: 'register',
         templateUrl: './register.component.html'
     }),
-    __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder])
+    __metadata("design:paramtypes", [picture_service_1.PictureService, forms_1.FormBuilder])
 ], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map

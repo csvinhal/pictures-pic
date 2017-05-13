@@ -13,13 +13,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * Created by crist on 11/05/2017.
  */
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
+var picture_service_1 = require("../picture/picture.service");
 var ListingComponent = (function () {
-    function ListingComponent(http) {
+    function ListingComponent(pictureService) {
         var _this = this;
         this.pictures = [];
-        http.get('v1/fotos').map(function (res) { return res.json(); }).subscribe(function (pictures) { return _this.pictures = pictures; }, function (error) { return console.log(error); });
+        pictureService.list().subscribe(function (pictures) { return _this.pictures = pictures; }, function (error) { return console.log(error); });
     }
+    ListingComponent.prototype.remove = function () {
+    };
     return ListingComponent;
 }());
 ListingComponent = __decorate([
@@ -28,7 +30,7 @@ ListingComponent = __decorate([
         selector: 'listing',
         templateUrl: './listing.component.html'
     }),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [picture_service_1.PictureService])
 ], ListingComponent);
 exports.ListingComponent = ListingComponent;
 //# sourceMappingURL=listing.component.js.map

@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var picture_component_1 = require("./picture.component");
 var picture_pipe_1 = require("./picture.pipe");
+var picture_service_1 = require("./picture.service");
 var PictureModule = (function () {
     function PictureModule() {
     }
@@ -20,7 +21,8 @@ var PictureModule = (function () {
 PictureModule = __decorate([
     core_1.NgModule({
         declarations: [picture_component_1.PictureComponent, picture_pipe_1.TitleFilter],
-        exports: [picture_component_1.PictureComponent, picture_pipe_1.TitleFilter]
+        exports: [picture_component_1.PictureComponent, picture_pipe_1.TitleFilter],
+        providers: [picture_service_1.PictureService]
     })
 ], PictureModule);
 exports.PictureModule = PictureModule;

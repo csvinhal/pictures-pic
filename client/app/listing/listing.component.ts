@@ -2,7 +2,8 @@
  * Created by crist on 11/05/2017.
  */
 import {Component} from '@angular/core';
-import {Http} from '@angular/http';
+import {PictureService} from '../picture/picture.service';
+import {PictureComponent} from "../picture/picture.component";
 
 @Component({
   moduleId: module.id,
@@ -11,11 +12,15 @@ import {Http} from '@angular/http';
 })
 export class ListingComponent {
 
-  pictures: Object[] = [];
+  pictures: PictureComponent[] = [];
 
-  constructor(http: Http) {
-    http.get('v1/fotos').map(res => res.json()).subscribe(
+  constructor(pictureService: PictureService) {
+    pictureService.list().subscribe(
       pictures => this.pictures = pictures,
       error => console.log(error));
+  }
+
+  remove() {
+
   }
 }

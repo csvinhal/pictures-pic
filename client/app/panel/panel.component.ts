@@ -1,12 +1,13 @@
 /**
  * Created by crist on 11/05/2017.
  */
-import {Component, Input, OnInit} from '@angular/core';
+  import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   moduleId: module.id,
   selector: 'panel',
-  templateUrl: './panel.component.html'
+  templateUrl: './panel.component.html',
+  styleUrls: ['./panel.component.css']
 })
 export class PanelComponent implements OnInit {
   @Input() titulo: string;

@@ -21,6 +21,7 @@
         <panel *ngFor="let picture of pictures | titleFilter: seachText.value" titulo="{{picture.titulo | uppercase}}"
                class="col-md-2">
             <picture url="{{picture.url}}" title="{{picture.titulo}}"></picture>
+            <button class="btn btn-danger btn-block">Remove</button>
         </panel>
     </div>
 </div>
