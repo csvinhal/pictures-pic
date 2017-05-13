@@ -18,8 +18,15 @@ export class PictureService {
     this.headers.append('Content-Type', 'application/json');
   }
 
-  save(picture: PictureComponent): Observable<Response> {
-    return this.http.post(this.url, JSON.stringify(picture), {headers: this.headers});
+  save(picture: PictureComponent): Observable<any> {
+    if (picture._id) return this.http.put(`${this.url}/${picture._id}`, JSON.stringify(picture), {headers: this.headers})
+      .map(() => ({message: 'Picture updated!', include: false}));
+    else return this.http.post(this.url, JSON.stringify(picture), {headers: this.headers})
+      .map(() => ({message: 'Picture saved!', include: true}));
+  }
+
+  searchById(id: string): Observable<PictureComponent> {
+    return this.http.get(`${this.url}/${id}`).map(res => res.json());
   }
 
   list(): Observable<PictureComponent[]> {

@@ -2,6 +2,7 @@
     <h1 class="text-center">{{picture.titulo}}</h1>
     <form [formGroup]="myForm" class="row" (submit)="save($event)">
         <div class="col-md-6">
+            <p *ngIf="message.length" class="alert alert-info">{{message}}</p>
             <div class="form-group">
                 <label>Title</label>
                 <input name="titulo" [(ngModel)]="picture.titulo" class="form-control"

@@ -22,7 +22,15 @@ var PictureService = (function () {
         this.headers.append('Content-Type', 'application/json');
     }
     PictureService.prototype.save = function (picture) {
-        return this.http.post(this.url, JSON.stringify(picture), { headers: this.headers });
+        if (picture._id)
+            return this.http.put(this.url + "/" + picture._id, JSON.stringify(picture), { headers: this.headers })
+                .map(function () { return ({ message: 'Picture updated!', include: false }); });
+        else
+            return this.http.post(this.url, JSON.stringify(picture), { headers: this.headers })
+                .map(function () { return ({ message: 'Picture saved!', include: true }); });
+    };
+    PictureService.prototype.searchById = function (id) {
+        return this.http.get(this.url + "/" + id).map(function (res) { return res.json(); });
     };
     PictureService.prototype.list = function () {
         return this.http.get(this.url).map(function (res) { return res.json(); });

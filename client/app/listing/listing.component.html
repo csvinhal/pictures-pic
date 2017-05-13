@@ -21,7 +21,9 @@
     <div class="row">
         <panel *ngFor="let picture of pictures | titleFilter: seachText.value" titulo="{{picture.titulo | uppercase}}"
                class="col-md-2">
-            <picture url="{{picture.url}}" title="{{picture.titulo}}"></picture>
+            <a [routerLink]="['/register', picture._id]">
+                <picture url="{{picture.url}}" title="{{picture.titulo}}"></picture>
+            </a>
             <button class="btn btn-danger btn-block" (click)="remove(picture)">Remove</button>
         </panel>
     </div>

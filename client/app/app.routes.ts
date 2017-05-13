@@ -8,6 +8,7 @@ import {ListingComponent} from "./listing/listing.component";
 const appRouters: Routes = [
   {path: '', component: ListingComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'register/:id', component: RegisterComponent},
   {path: '**', redirectTo: ''}
 ];
 

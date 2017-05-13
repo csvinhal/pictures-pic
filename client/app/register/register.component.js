@@ -16,10 +16,22 @@ var core_1 = require("@angular/core");
 var picture_component_1 = require("../picture/picture.component");
 var forms_1 = require("@angular/forms");
 var picture_service_1 = require("../picture/picture.service");
+var router_1 = require("@angular/router");
 var RegisterComponent = (function () {
-    function RegisterComponent(pictureService, fb) {
+    function RegisterComponent(pictureService, fb, route, router) {
+        var _this = this;
         this.picture = new picture_component_1.PictureComponent();
+        this.message = '';
         this.pictureService = pictureService;
+        this.route = route;
+        this.router = router;
+        this.route.params.subscribe(function (params) {
+            var id = params['id'];
+            if (id) {
+                _this.pictureService.searchById(id)
+                    .subscribe(function (picture) { return _this.picture = picture; }, function (error) { return console.log(error); });
+            }
+        });
         this.myForm = fb.group({
             titulo: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])],
             url: ['', forms_1.Validators.required],
@@ -29,9 +41,11 @@ var RegisterComponent = (function () {
     RegisterComponent.prototype.save = function (event) {
         var _this = this;
         event.preventDefault();
-        this.pictureService.save(this.picture).subscribe(function () {
+        this.pictureService.save(this.picture).subscribe(function (res) {
+            _this.message = res.message;
             _this.picture = new picture_component_1.PictureComponent();
-            console.log('Picture successful saved');
+            if (!res.include)
+                _this.router.navigate(['']);
         }, function (error) { return console.log(error); });
     };
     return RegisterComponent;
@@ -42,7 +56,7 @@ RegisterComponent = __decorate([
         selector: 'register',
         templateUrl: './register.component.html'
     }),
-    __metadata("design:paramtypes", [picture_service_1.PictureService, forms_1.FormBuilder])
+    __metadata("design:paramtypes", [picture_service_1.PictureService, forms_1.FormBuilder, router_1.ActivatedRoute, router_1.Router])
 ], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map

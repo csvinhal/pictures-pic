@@ -9,6 +9,7 @@ var listing_component_1 = require("./listing/listing.component");
 var appRouters = [
     { path: '', component: listing_component_1.ListingComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
+    { path: 'register/:id', component: register_component_1.RegisterComponent },
     { path: '**', redirectTo: '' }
 ];
 exports.routing = router_1.RouterModule.forRoot(appRouters);
