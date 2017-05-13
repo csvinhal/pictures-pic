@@ -27,6 +27,9 @@ var PictureService = (function () {
     PictureService.prototype.list = function () {
         return this.http.get(this.url).map(function (res) { return res.json(); });
     };
+    PictureService.prototype.remove = function (picture) {
+        return this.http.delete(this.url + "/" + picture._id);
+    };
     return PictureService;
 }());
 PictureService = __decorate([

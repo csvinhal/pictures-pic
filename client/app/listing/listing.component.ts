@@ -12,15 +12,26 @@ import {PictureComponent} from "../picture/picture.component";
 })
 export class ListingComponent {
 
+  pictureService: PictureService;
   pictures: PictureComponent[] = [];
+  message: string = '';
 
   constructor(pictureService: PictureService) {
+    this.pictureService = pictureService;
     pictureService.list().subscribe(
       pictures => this.pictures = pictures,
       error => console.log(error));
   }
 
-  remove() {
-
+  remove(picture) {
+    this.pictureService.remove(picture).subscribe(
+      () => {
+        let newPictures = this.pictures.slice(0);
+        let index = newPictures.indexOf(picture);
+        newPictures.splice(index, 1);
+        this.pictures = newPictures;
+        this.message = 'Picture successful removed!'
+      },
+      error => this.message = 'Something wrong happened!');
   }
 }

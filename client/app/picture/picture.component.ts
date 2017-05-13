@@ -13,4 +13,5 @@ export class PictureComponent {
   @Input() titulo: string;
   @Input() url: string;
   descricao: string;
+  _id: string;
 }

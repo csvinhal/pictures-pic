@@ -18,9 +18,19 @@ var ListingComponent = (function () {
     function ListingComponent(pictureService) {
         var _this = this;
         this.pictures = [];
+        this.message = '';
+        this.pictureService = pictureService;
         pictureService.list().subscribe(function (pictures) { return _this.pictures = pictures; }, function (error) { return console.log(error); });
     }
-    ListingComponent.prototype.remove = function () {
+    ListingComponent.prototype.remove = function (picture) {
+        var _this = this;
+        this.pictureService.remove(picture).subscribe(function () {
+            var newPictures = _this.pictures.slice(0);
+            var index = newPictures.indexOf(picture);
+            newPictures.splice(index, 1);
+            _this.pictures = newPictures;
+            _this.message = 'Picture successful removed!';
+        }, function (error) { return _this.message = 'Something wrong happened!'; });
     };
     return ListingComponent;
 }());

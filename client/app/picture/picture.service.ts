@@ -25,4 +25,8 @@ export class PictureService {
   list(): Observable<PictureComponent[]> {
     return this.http.get(this.url).map(res => res.json());
   }
+
+  remove(picture: PictureComponent) {
+    return this.http.delete(`${this.url}/${picture._id}`);
+  }
 }

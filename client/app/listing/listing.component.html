@@ -2,6 +2,7 @@
     <h1 class="text-center">Pictures Pic</h1>
 </div>
 <div class="container">
+    <p *ngIf="message.length" class="alert alert-info">{{message}}</p>
     <div class="row">
         <div class="col-md-12">
             <form>
@@ -21,7 +22,7 @@
         <panel *ngFor="let picture of pictures | titleFilter: seachText.value" titulo="{{picture.titulo | uppercase}}"
                class="col-md-2">
             <picture url="{{picture.url}}" title="{{picture.titulo}}"></picture>
-            <button class="btn btn-danger btn-block">Remove</button>
+            <button class="btn btn-danger btn-block" (click)="remove(picture)">Remove</button>
         </panel>
     </div>
 </div>
