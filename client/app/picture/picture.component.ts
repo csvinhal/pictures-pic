@@ -1,14 +1,15 @@
 /**
  * Created by crist on 11/05/2017.
  */
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
-    moduleId: module.id,
-    selector: 'picture',
-    templateUrl: './picture.component.html'
+  moduleId: module.id,
+  selector: 'picture',
+  templateUrl: './picture.component.html'
 })
 export class PictureComponent {
-    @Input() title;
-    @Input() url;
+  @Input() titulo: string;
+  @Input() url: string;
+  descricao: string;
 }

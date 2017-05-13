@@ -16,12 +16,15 @@ var core_1 = require("@angular/core");
 var PanelComponent = (function () {
     function PanelComponent() {
     }
+    PanelComponent.prototype.ngOnInit = function () {
+        this.titulo = this.titulo.length > 7 ? this.titulo.substr(0, 7) + '...' : this.titulo;
+    };
     return PanelComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", String)
-], PanelComponent.prototype, "title", void 0);
+], PanelComponent.prototype, "titulo", void 0);
 PanelComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

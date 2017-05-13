@@ -7,21 +7,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Created by crist on 11/05/2017.
+ * Created by crist on 13/05/2017.
  */
 var core_1 = require("@angular/core");
-var picture_component_1 = require("./picture.component");
-var picture_pipe_1 = require("./picture.pipe");
-var PictureModule = (function () {
-    function PictureModule() {
+var TitleFilter = (function () {
+    function TitleFilter() {
     }
-    return PictureModule;
+    TitleFilter.prototype.transform = function (pictures, text) {
+        return pictures.filter(function (picture) { return picture.titulo.toLowerCase().includes(text.toLowerCase()); });
+    };
+    return TitleFilter;
 }());
-PictureModule = __decorate([
-    core_1.NgModule({
-        declarations: [picture_component_1.PictureComponent, picture_pipe_1.TitleFilter],
-        exports: [picture_component_1.PictureComponent, picture_pipe_1.TitleFilter]
+TitleFilter = __decorate([
+    core_1.Pipe({
+        name: 'titleFilter'
     })
-], PictureModule);
-exports.PictureModule = PictureModule;
-//# sourceMappingURL=picture.module.js.map
+], TitleFilter);
+exports.TitleFilter = TitleFilter;
+//# sourceMappingURL=picture.pipe.js.map

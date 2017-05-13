@@ -20,11 +20,11 @@ var PictureComponent = (function () {
 }());
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Object)
-], PictureComponent.prototype, "title", void 0);
+    __metadata("design:type", String)
+], PictureComponent.prototype, "titulo", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Object)
+    __metadata("design:type", String)
 ], PictureComponent.prototype, "url", void 0);
 PictureComponent = __decorate([
     core_1.Component({

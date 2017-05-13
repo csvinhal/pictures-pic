@@ -1,7 +1,6 @@
 <div class="jumbotron">
     <h1 class="text-center">Pictures Pic</h1>
 </div>
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -12,13 +11,15 @@
                         New Picture
                     </a>
                 </span>
+                    <input #seachText (keyup)="0" class="form-control" placeholder="Filter picture">
                 </div>
             </form>
         </div>
     </div>
     <br>
     <div class="row">
-        <panel *ngFor="let picture of pictures" title={{picture.titulo}} class="col-md-2">
+        <panel *ngFor="let picture of pictures | titleFilter: seachText.value" titulo="{{picture.titulo | uppercase}}"
+               class="col-md-2">
             <picture url="{{picture.url}}" title="{{picture.titulo}}"></picture>
         </panel>
     </div>

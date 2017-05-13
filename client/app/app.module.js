@@ -18,6 +18,7 @@ var picture_module_1 = require("./picture/picture.module");
 var panel_module_1 = require("./panel/panel.module");
 var http_1 = require("@angular/http");
 var app_routes_1 = require("./app.routes");
+var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/map");
 var AppModule = (function () {
     function AppModule() {
@@ -26,7 +27,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, picture_module_1.PictureModule, http_1.HttpModule, panel_module_1.PanelModule, app_routes_1.routing],
+        imports: [platform_browser_1.BrowserModule, picture_module_1.PictureModule, http_1.HttpModule, panel_module_1.PanelModule, app_routes_1.routing, forms_1.FormsModule, forms_1.ReactiveFormsModule],
         declarations: [app_component_1.AppComponent, register_component_1.RegisterComponent, listing_component_1.ListingComponent],
         bootstrap: [app_component_1.AppComponent]
     })

@@ -1,1 +1,39 @@
-<h1>Register Picture</h1>
+<div class="container">
+    <h1 class="text-center">{{picture.titulo}}</h1>
+    <form [formGroup]="myForm" class="row" (submit)="save($event)">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Title</label>
+                <input name="titulo" [(ngModel)]="picture.titulo" class="form-control"
+                       autocomplete="off" formControlName="titulo">
+                <div *ngIf="myForm.controls.titulo.invalid">
+                    <span *ngIf="myForm.controls.titulo.errors.required" class="form-control alert-danger">Required title</span>
+                    <span *ngIf="myForm.controls.titulo.errors.minlength" class="form-control alert-danger">The field must be at least 4 characters</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>URL</label>
+                <input name="url" [(ngModel)]="picture.url" class="form-control" autocomplete="off"
+                       formControlName="url">
+                <span class="form-control alert-danger" *ngIf="myForm.controls.url.invalid">Required URL</span>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="descricao" [(ngModel)]="picture.descricao" class="form-control"
+                          autocomplete="off"
+                          formControlName="descricao"></textarea>
+                <span class="form-control alert-danger"
+                      *ngIf="myForm.controls.descricao.invalid">Required description</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">
+                Save
+            </button>
+            <a [routerLink]="['']" class="btn btn-primary">Back</a>
+            <hr>
+        </div>
+        <div class="col-md-6">
+            <picture [url]="picture.url" [titulo]="picture.titulo"></picture>
+        </div>
+    </form>
+</div>
