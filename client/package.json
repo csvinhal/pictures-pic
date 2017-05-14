@@ -6,7 +6,8 @@
   "scripts": {
     "tsc:w": "tsc -w",
     "start": "npm run tsc:w",
-    "typings": "typings"
+    "typings": "typings",
+    "postinstall": "typings install"
   },
   "repository": {
     "type": "git",

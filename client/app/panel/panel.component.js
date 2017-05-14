@@ -14,10 +14,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = require("@angular/core");
 var PanelComponent = (function () {
-    function PanelComponent() {
+    function PanelComponent(element) {
+        this.element = element;
     }
     PanelComponent.prototype.ngOnInit = function () {
         this.titulo = this.titulo.length > 7 ? this.titulo.substr(0, 7) + '...' : this.titulo;
+    };
+    PanelComponent.prototype.fadeOut = function (cb) {
+        $(this.element.nativeElement).fadeOut(cb);
     };
     return PanelComponent;
 }());
@@ -31,7 +35,8 @@ PanelComponent = __decorate([
         selector: 'panel',
         templateUrl: './panel.component.html',
         styleUrls: ['./panel.component.css']
-    })
+    }),
+    __metadata("design:paramtypes", [core_1.ElementRef])
 ], PanelComponent);
 exports.PanelComponent = PanelComponent;
 //# sourceMappingURL=panel.component.js.map

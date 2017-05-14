@@ -4,6 +4,7 @@
 import {Component} from '@angular/core';
 import {PictureService} from '../picture/picture.service';
 import {PictureComponent} from "../picture/picture.component";
+import {PanelComponent} from './../panel/panel.component';
 
 @Component({
   moduleId: module.id,
@@ -23,14 +24,16 @@ export class ListingComponent {
       error => console.log(error));
   }
 
-  remove(picture) {
+  remove(picture, panel: PanelComponent) {
     this.pictureService.remove(picture).subscribe(
       () => {
-        let newPictures = this.pictures.slice(0);
-        let index = newPictures.indexOf(picture);
-        newPictures.splice(index, 1);
-        this.pictures = newPictures;
-        this.message = 'Picture successful removed!'
+        panel.fadeOut(() => {
+          let newPictures = this.pictures.slice(0);
+          let index = newPictures.indexOf(picture);
+          newPictures.splice(index, 1);
+          this.pictures = newPictures;
+          this.message = 'Picture successful removed!'
+        });
       },
       error => this.message = 'Something wrong happened!');
   }
