@@ -19,14 +19,10 @@ var ButtonComponent = (function () {
         this.btnStyle = 'btn-default';
         this.btnType = 'button';
         this.btnEnabled = false;
-        this.confirm = false;
         this.action = new core_1.EventEmitter();
     }
     ButtonComponent.prototype.executeAction = function () {
-        if (!this.confirm)
-            return this.action.emit(null);
-        else if (confirm('Are you sure you want to remove?'))
-            this.action.emit(null);
+        return this.action.emit(null);
     };
     return ButtonComponent;
 }());
@@ -46,10 +42,6 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", Boolean)
 ], ButtonComponent.prototype, "btnEnabled", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Boolean)
-], ButtonComponent.prototype, "confirm", void 0);
 __decorate([
     core_1.Output(),
     __metadata("design:type", Object)

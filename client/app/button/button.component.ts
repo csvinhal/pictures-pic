@@ -14,11 +14,9 @@ export class ButtonComponent {
   @Input() btnStyle: string = 'btn-default';
   @Input() btnType: string = 'button';
   @Input() btnEnabled: boolean = false;
-  @Input() confirm: boolean = false;
   @Output() action = new EventEmitter();
 
   executeAction() {
-    if(!this.confirm) return this.action.emit(null);
-    else if(confirm('Are you sure you want to remove?')) this.action.emit(null);
+    return this.action.emit(null);
   }
 }

@@ -19,13 +19,15 @@
     </div>
     <br>
     <div class="row">
-        <panel #panel *ngFor="let picture of pictures | titleFilter: seachText.value" titulo="{{picture.titulo | uppercase}}"
+        <panel #panel *ngFor="let picture of pictures | titleFilter: seachText.value"
+               titulo="{{picture.titulo | uppercase}}"
                class="col-md-2">
             <a [routerLink]="['/register', picture._id]">
                 <picture url="{{picture.url}}" title="{{picture.titulo}}"></picture>
             </a>
-            <buttonCmp name="Remove" btnStyle="btn-danger btn-block" (action)="remove(picture, panel)"
-                       confirm="true"></buttonCmp>
+            <buttonCmp name="Remove" btnStyle="btn-danger btn-block" (action)="modal.show()"
+                       confirm="false"></buttonCmp>
+            <modal #modal phrase="Are you sure you want to remove??" (confirm)="remove(picture, panel)"></modal>
         </panel>
     </div>
 </div>

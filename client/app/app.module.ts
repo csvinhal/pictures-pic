@@ -13,9 +13,10 @@ import {routing} from './app.routes';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import 'rxjs/add/operator/map';
 import {ButtonModule} from "./button/button.module";
+import {ModalModule} from './modal/modal.module';
 
 @NgModule({
-  imports: [BrowserModule, PictureModule, HttpModule, PanelModule, routing, FormsModule, ReactiveFormsModule, ButtonModule],
+  imports: [BrowserModule, PictureModule, HttpModule, PanelModule, routing, FormsModule, ReactiveFormsModule, ButtonModule, ModalModule],
   declarations: [AppComponent, RegisterComponent, ListingComponent],
   bootstrap: [AppComponent]
 })
