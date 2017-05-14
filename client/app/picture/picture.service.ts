@@ -18,11 +18,11 @@ export class PictureService {
     this.headers.append('Content-Type', 'application/json');
   }
 
-  save(picture: PictureComponent): Observable<any> {
+  save(picture: PictureComponent): Observable<RegisterMessage> {
     if (picture._id) return this.http.put(`${this.url}/${picture._id}`, JSON.stringify(picture), {headers: this.headers})
-      .map(() => ({message: 'Picture updated!', include: false}));
+      .map(() => new RegisterMessage('Picture updated!', false));
     else return this.http.post(this.url, JSON.stringify(picture), {headers: this.headers})
-      .map(() => ({message: 'Picture saved!', include: true}));
+      .map(() => new RegisterMessage('Picture saved!', true));
   }
 
   searchById(id: string): Observable<PictureComponent> {
@@ -35,5 +35,21 @@ export class PictureService {
 
   remove(picture: PictureComponent) {
     return this.http.delete(`${this.url}/${picture._id}`);
+  }
+}
+
+export class RegisterMessage {
+
+  constructor(private _message: string, private _include: boolean) {
+    this._message = _message;
+    this._include = _include;
+  }
+
+  get message(): string {
+    return this._message;
+  }
+
+  get include(): boolean {
+    return this._include;
   }
 }

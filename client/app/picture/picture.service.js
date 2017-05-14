@@ -24,10 +24,10 @@ var PictureService = (function () {
     PictureService.prototype.save = function (picture) {
         if (picture._id)
             return this.http.put(this.url + "/" + picture._id, JSON.stringify(picture), { headers: this.headers })
-                .map(function () { return ({ message: 'Picture updated!', include: false }); });
+                .map(function () { return new RegisterMessage('Picture updated!', false); });
         else
             return this.http.post(this.url, JSON.stringify(picture), { headers: this.headers })
-                .map(function () { return ({ message: 'Picture saved!', include: true }); });
+                .map(function () { return new RegisterMessage('Picture saved!', true); });
     };
     PictureService.prototype.searchById = function (id) {
         return this.http.get(this.url + "/" + id).map(function (res) { return res.json(); });
@@ -45,4 +45,28 @@ PictureService = __decorate([
     __metadata("design:paramtypes", [http_1.Http])
 ], PictureService);
 exports.PictureService = PictureService;
+var RegisterMessage = (function () {
+    function RegisterMessage(_message, _include) {
+        this._message = _message;
+        this._include = _include;
+        this._message = _message;
+        this._include = _include;
+    }
+    Object.defineProperty(RegisterMessage.prototype, "message", {
+        get: function () {
+            return this._message;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RegisterMessage.prototype, "include", {
+        get: function () {
+            return this._include;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return RegisterMessage;
+}());
+exports.RegisterMessage = RegisterMessage;
 //# sourceMappingURL=picture.service.js.map
