@@ -20,6 +20,7 @@ var http_1 = require("@angular/http");
 var app_routes_1 = require("./app.routes");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/map");
+var button_module_1 = require("./button/button.module");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,7 +28,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, picture_module_1.PictureModule, http_1.HttpModule, panel_module_1.PanelModule, app_routes_1.routing, forms_1.FormsModule, forms_1.ReactiveFormsModule],
+        imports: [platform_browser_1.BrowserModule, picture_module_1.PictureModule, http_1.HttpModule, panel_module_1.PanelModule, app_routes_1.routing, forms_1.FormsModule, forms_1.ReactiveFormsModule, button_module_1.ButtonModule],
         declarations: [app_component_1.AppComponent, register_component_1.RegisterComponent, listing_component_1.ListingComponent],
         bootstrap: [app_component_1.AppComponent]
     })

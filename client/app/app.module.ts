@@ -12,9 +12,10 @@ import {HttpModule} from '@angular/http';
 import {routing} from './app.routes';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import 'rxjs/add/operator/map';
+import {ButtonModule} from "./button/button.module";
 
 @NgModule({
-  imports: [BrowserModule, PictureModule, HttpModule, PanelModule, routing, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, PictureModule, HttpModule, PanelModule, routing, FormsModule, ReactiveFormsModule, ButtonModule],
   declarations: [AppComponent, RegisterComponent, ListingComponent],
   bootstrap: [AppComponent]
 })

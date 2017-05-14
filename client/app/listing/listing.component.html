@@ -24,7 +24,8 @@
             <a [routerLink]="['/register', picture._id]">
                 <picture url="{{picture.url}}" title="{{picture.titulo}}"></picture>
             </a>
-            <button class="btn btn-danger btn-block" (click)="remove(picture)">Remove</button>
+            <buttonCmp name="Remove" btnStyle="btn-danger btn-block" (action)="remove(picture)"
+                       confirm="true"></buttonCmp>
         </panel>
     </div>
 </div>

@@ -27,9 +27,7 @@
                       *ngIf="myForm.controls.descricao.invalid">Required description</span>
             </div>
 
-            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">
-                Save
-            </button>
+            <buttonCmp name="Save" btnStyle="btn-primary" btnType="submit" [btnEnabled]="myForm.invalid"></buttonCmp>
             <a [routerLink]="['']" class="btn btn-primary">Back</a>
             <hr>
         </div>
